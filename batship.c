@@ -43,13 +43,13 @@ int main(){
 			updateGrid(row, col, board, fleet);
 			shots++;
 			game = gameOver(fleet);
-		} while(game == 0);
+		} while (game == 0);
 	
 	printf("It took %d turns for you to hit 31 spots and destroy all the ships\n", shots);
 	
 		printf("Play again? (Y/N) ");
 		scanf(" %c", &playAgain);
-	} while(playAgain == 'Y');
+	} while (playAgain == 'Y');
 	
 	return 0;
 }
@@ -64,9 +64,13 @@ void initGrid(char board[][GRID_SIZE]){
 }
 
 void loadFleet(FILE *file, char fleet[][GRID_SIZE]){
+	char placements[GRID_SIZE + 1];
+	
 	for(int row = 0; row < GRID_SIZE; row++){
-		for(int col = 0; col < GRID_SIZE; col++){
-			fscanf(file, " %c", &fleet[row][col]);
+		if(fgets(placements, sizeof(placements), file) != NULL){
+			for(int col = 0; col < GRID_SIZE; col++){
+			fleet[row][col] = placements[col];
+			}
 		}
 	}
 }
@@ -128,4 +132,3 @@ int gameOver(char fleet[][GRID_SIZE]){
 	}
 	return 1;
 }
-//printf("Your score is %d!", );

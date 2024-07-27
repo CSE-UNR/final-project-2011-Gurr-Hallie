@@ -40,7 +40,7 @@ int main(){
 		do{
 			displayGrid(board);
 			playerGuess(&row, &col);
-			updateGrid(row, col, board, fleet);//
+			updateGrid(row, col, board, fleet);
 			shots++;
 			game = gameOver(fleet);
 		} while(game == 0);
@@ -48,7 +48,7 @@ int main(){
 	printf("It took %d turns for you to hit 31 spots and destroy all the ships\n", shots);
 	
 		printf("Play again? (Y/N) ");
-		scanf("%c", &playAgain);
+		scanf(" %c", &playAgain);
 	} while(playAgain == 'Y');
 	
 	return 0;
